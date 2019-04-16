@@ -296,6 +296,7 @@ redefine命令提供了我们可以重新定义jvm中的class，但是使用这�
 上面已经给大家介绍了强大的Arthas，有很多人也想做一个可以动态替换Class的工具，但是这种东西过于底层，比较小众，入门的门槛相对来说比较高。但是jvm-sandbox，给我们提供了用通俗易懂的编码方式来动态替换Class。
 
 ## 3.1 AOP
+
 对于AOP来说大家肯定对其不陌生,在Spring中我们可以很方便的实现一个AOP，但是这样有两个缺点:一个是只能针对Spring中的Bean进行增强，还有个是增强之后如果要修改增强内容那么就只能重写然后发布项目，不能动态的增强。
 
 ## 3.2 sanbox能带来什么
@@ -391,7 +392,7 @@ sadbox介绍得比较少，有兴趣的同学可以去github上自行了解:http
 ](https://mp.weixin.qq.com/s/Nk4lP7723XIbu5AWXaswmw)
 - [字节码也能做有趣的事之ASM](https://mp.weixin.qq.com/s/8yvMSwdjPklcJOyZAlDESw)
 - [教你用Java字节码做日志脱敏工具](https://mp.weixin.qq.com/s/I-MIkZ2s57ft14Cul9i2IA)
- 
+
 
 对于ASM修改字节码的技术这里就不做多余阐述。
 ## 4.2 Instrumentation

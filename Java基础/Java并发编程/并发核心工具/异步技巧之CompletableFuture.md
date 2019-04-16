@@ -106,6 +106,7 @@ public V get() throws InterruptedException, ExecutionException {
 ### 1.3CompletableFuture
 CompletableFuture是JDK8提出的一个支持非阻塞的多功能的Future，同样也是实现了Future接口。
 #### 1.3.1CompletableFuture基本实现
+
 下面会写一个比较简单的例子：
 
 ```
@@ -126,7 +127,9 @@ public static void main(String[] args) {
     }
 ```
 用法上来说和Future有一点不同，我们这里fork了一个新的线程来完成我们的异步操作，在异步操作中我们会设置值，然后在外部做我们其他操作。在complete中会用CAS替换result，然后当我们get如果可以获取到值得时候就可以返回了。
+
 #### 1.3.2错误处理
+
 上面介绍了正常情况下但是当我们在我们异步线程中产生了错误的话就会非常的不幸，错误的异常不会告知给你，会被扼杀在我们的异步线程中，而我们的get方法会被阻塞。
 
 对于我们的CompletableFuture提供了completeException方法可以让我们返回我们异步线程中的异常,代码如下:
@@ -207,6 +210,7 @@ public void run() {
 ```
 上面代码中通过d.completeValue(f.get());设置了我们的值。同样的构造方法还有runasync等等。
 #### 1.3.3计算结果完成时的处理
+
 当CompletableFuture计算结果完成时,我们需要对结果进行处理，或者当CompletableFuture产生异常的时候需要对异常进行处理。有如下几种方法:
 
 ```
@@ -252,6 +256,7 @@ public static void main(String[] args) throws Exception {
 ```
 上面的最终结果会输出11，我们成功将其用两个thenApply转换为String。
 #### 1.3.5计算结果完成时的消费
+
 上面已经讲了结果完成时的处理和转换，他们最后的CompletableFuture都会返回对应的值，这里还会有一个只会对计算结果消费不会返回任何结果的方法。
 
 ```
@@ -299,6 +304,7 @@ public CompletableFuture<Void> 	thenRunAsync(Runnable action)
 public CompletableFuture<Void> 	thenRunAsync(Runnable action, Executor executor)
 ```
 #### 1.3.6对计算结果的组合
+
 首先是介绍一下连接两个future的方法:
 
 ```
